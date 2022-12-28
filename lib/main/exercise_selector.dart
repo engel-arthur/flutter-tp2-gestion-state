@@ -7,7 +7,7 @@ class ExerciseSelectorPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('TP1 - Intefaces Graphiques'),
+        title: const Text('TP2 - Interfaces Graphiques'),
       ),
       body: const ExerciseSelector(),
     );

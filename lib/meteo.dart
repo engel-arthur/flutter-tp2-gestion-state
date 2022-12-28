@@ -6,7 +6,7 @@ class MeteoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Météo")),
+      appBar: AppBar(title: const Text("TP2 - Météo")),
       body: const Placeholder(),
     );
   }

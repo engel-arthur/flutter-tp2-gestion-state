@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tp2_gestion_state/exercise_selector.dart';
-import 'package:tp2_gestion_state/quiz.dart';
+import 'package:provider/provider.dart';
+import 'package:tp2_gestion_state/provider/logic/quiz_model.dart';
+import 'package:tp2_gestion_state/main/exercise_selector.dart';
 import 'package:tp2_gestion_state/meteo.dart';
+import 'package:tp2_gestion_state/provider/presentation/quiz_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TP1 - Interfaces graphiques',
+      title: 'TP2 - Interfaces graphiques',
       theme: ThemeData(
         primarySwatch: Colors.green,
       ),
       initialRoute: '/',
       routes: {
         '/': (context) => const ExerciseSelectorPage(),
-        '/quiz': (context) => const QuizPage(),
+        '/quiz': (context) => ChangeNotifierProvider(create: (context) => QuizModel(), child: const QuizPage()),
         '/meteo' : (context) => const MeteoPage(),
       },
     );
