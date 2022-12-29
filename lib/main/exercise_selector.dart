@@ -56,9 +56,15 @@ class ExerciseSelectorButtons extends StatelessWidget {
         ),
         ElevatedButton(
           onPressed: () {
-            Navigator.pushNamed(context, '/quiz');
+            Navigator.pushNamed(context, '/quizProvider');
           },
-          child: const Text("Quizz"),
+          child: const Text("Quizz Provider"),
+        ),
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pushNamed(context, '/quizCubit');
+          },
+          child: const Text("Quizz Cubit"),
         )
       ],
     );

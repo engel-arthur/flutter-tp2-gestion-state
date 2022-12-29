@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
+import 'package:tp2_gestion_state/bloc_cubit/business_logic/cubit/answer_cubit.dart';
+import 'package:tp2_gestion_state/bloc_cubit/presentation/quiz_page.dart';
 import 'package:tp2_gestion_state/provider/logic/quiz_model.dart';
 import 'package:tp2_gestion_state/main/exercise_selector.dart';
 import 'package:tp2_gestion_state/meteo.dart';
@@ -23,7 +26,8 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const ExerciseSelectorPage(),
-        '/quiz': (context) => ChangeNotifierProvider(create: (context) => QuizModel(), child: const QuizPage()),
+        '/quizProvider': (context) => ChangeNotifierProvider(create: (context) => QuizModel(), child: const QuizPageProvider()),
+        '/quizCubit': (context) => BlocProvider(create: (context) => AnswerCubit(), child: const QuizPageCubit()),
         '/meteo' : (context) => const MeteoPage(),
       },
     );

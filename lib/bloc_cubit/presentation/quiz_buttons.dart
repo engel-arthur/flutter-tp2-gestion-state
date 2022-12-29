@@ -1,43 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../logic/quiz_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tp2_gestion_state/bloc_cubit/business_logic/cubit/answer_cubit.dart';
 
 class QuizButtons extends StatelessWidget {
   const QuizButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Function checkAnswer =
-        Provider.of<QuizModel>(context, listen: false).checkAnswer;
-    Function incrementQuestionIndex =
-        Provider.of<QuizModel>(context, listen: false).incrementQuestionIndex;
-
-    return ButtonBar(
-      alignment: MainAxisAlignment.center,
-      children: [
-        buildAnswerButton(checkAnswer, true),
-        buildAnswerButton(checkAnswer, false),
-        getNextQuestionButton(incrementQuestionIndex)
-      ],
+    return BlocBuilder<AnswerCubit, AnswerState>(
+      builder: (context, state) {
+        return ButtonBar(
+          alignment: MainAxisAlignment.center,
+          children: [
+            buildAnswerButton(BlocProvider.of<AnswerCubit>(context), true),
+            buildAnswerButton(BlocProvider.of<AnswerCubit>(context), false),
+            getNextQuestionButton(BlocProvider.of<AnswerCubit>(context))
+          ],
+        );
+      },
     );
   }
 
-  ElevatedButton getNextQuestionButton(Function incrementQuestionIndex) {
+  ElevatedButton getNextQuestionButton(AnswerCubit answerCubit) {
     return ElevatedButton(
       onPressed: () {
-        incrementQuestionIndex();
+        answerCubit.incrementQuestionIndex();
       },
       child: const Icon(Icons.arrow_right),
     );
   }
 
-  ElevatedButton buildAnswerButton(Function checkAnswer, bool stateButton) {
+  ElevatedButton buildAnswerButton(AnswerCubit answerCubit, bool stateButton) {
     String message = stateButton ? "Vrai" : "Faux";
 
     return ElevatedButton(
       onPressed: () {
-        checkAnswer(stateButton);
+        answerCubit.checkAnswer(stateButton);
       },
       child: Text(message),
     );

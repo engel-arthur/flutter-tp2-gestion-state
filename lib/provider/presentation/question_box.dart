@@ -4,7 +4,7 @@ import 'package:tp2_gestion_state/provider/presentation/padded_text.dart';
 import 'package:tp2_gestion_state/provider/presentation/quiz_buttons.dart';
 
 import '../logic/question.dart';
-import '../logic//quiz_model.dart';
+import '../logic/quiz_model.dart';
 
 class QuestionBox extends StatelessWidget {
   const QuestionBox({Key? key}) : super(key: key);

@@ -5,8 +5,8 @@ import 'package:tp2_gestion_state/provider/presentation/results_box.dart';
 
 import '../logic/quiz_model.dart';
 
-class QuizPage extends StatelessWidget {
-  const QuizPage({super.key});
+class QuizPageProvider extends StatelessWidget {
+  const QuizPageProvider({super.key});
 
   @override
   Widget build(BuildContext context) {

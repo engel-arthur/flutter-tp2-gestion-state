@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../logic/quiz_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tp2_gestion_state/bloc_cubit/business_logic/cubit/answer_cubit.dart';
 
 class ResultsBox extends StatelessWidget {
   const ResultsBox({Key? key}) : super(key: key);
@@ -9,12 +8,16 @@ class ResultsBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    int score = Provider.of<QuizModel>(context, listen: false).score;
-
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(children: [Text("Vous avez marqué $score point(s).")]),
+        child: Column(children: [BlocBuilder<AnswerCubit, AnswerState>(
+          builder: (context, state) {
+            int score = state.score;
+            return Text("Vous avez marqué $score point(s).");
+          },
+        )
+        ]),
       ),
     );
   }

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:tp2_gestion_state/provider/presentation/question_box.dart';
-import 'package:tp2_gestion_state/provider/presentation/results_box.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tp2_gestion_state/bloc_cubit/business_logic/cubit/answer_cubit.dart';
+import 'package:tp2_gestion_state/bloc_cubit/presentation/question_box.dart';
+import 'package:tp2_gestion_state/bloc_cubit/presentation/results_box.dart';
 
-import '../logic/quiz_model.dart';
-
-class QuizPage extends StatelessWidget {
-  const QuizPage({super.key});
+class QuizPageCubit extends StatelessWidget {
+  const QuizPageCubit({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +15,9 @@ class QuizPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Center(
-              child: Consumer<QuizModel>(
-                builder: (context, quiz, child) {
-                  return _getNextWidget(quiz);
+              child: BlocBuilder<AnswerCubit, AnswerState>(
+                builder: (context, state) {
+                  return _getNextWidget(state);
                 },
               ),
             )
@@ -26,11 +25,10 @@ class QuizPage extends StatelessWidget {
         ));
   }
 
-  Widget _getNextWidget(QuizModel quiz) {
-    int questionIndex = quiz.questionIndex;
-    int questionLength = quiz.questions.length;
+  Widget _getNextWidget(AnswerState answerState) {
+    bool quizOver = answerState.quizOver;
 
-    if (questionIndex < questionLength) {
+    if (!quizOver) {
       return const QuestionBox();
     } else {
       return const ResultsBox();
