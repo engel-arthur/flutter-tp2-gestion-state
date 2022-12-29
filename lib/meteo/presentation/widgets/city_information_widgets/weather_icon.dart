@@ -20,7 +20,7 @@ class WeatherIcon extends StatelessWidget {
       case "Rain":
         return Icon(Icons.water_drop, color: Colors.blue, size: size);
       case "Snow":
-        return Icon(Icons.cloudy_snowing, color: Colors.grey, size: size);
+        return Icon(Icons.cloudy_snowing, color: Colors.white, size: size);
       default:
         return Icon(Icons.sunny, color: Colors.yellow, size: size);
     }

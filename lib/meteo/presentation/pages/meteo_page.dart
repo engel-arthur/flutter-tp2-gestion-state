@@ -10,21 +10,27 @@ class MeteoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("TP2 - Météo")),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: const [
-            CitySearchField(),
-            CityInformation(
-              cityName: 'Montpellier',
-              date: '22-02-2023',
-              humidity: '10%',
-              precipitation: '20%',
-              temperature: '20°C',
-              weatherDescription: 'Snow',
-            ),
-            WeatherForecastInformation()
-          ],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: const [
+              CitySearchField(),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CityInformation(
+                  cityName: 'Montpellier',
+                  date: '22-02-2023',
+                  humidity: '10%',
+                  precipitation: '20%',
+                  temperature: '20°C',
+                  weatherDescription: 'Snow',
+                ),
+              ),
+              WeatherForecastInformation()
+            ],
+          ),
         ),
       ),
     );

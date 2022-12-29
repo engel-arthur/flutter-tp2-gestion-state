@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tp2_gestion_state/meteo/presentation/widgets/city_information_widgets/weather_icon.dart';
 import 'package:tp2_gestion_state/meteo/presentation/widgets/widget_utils/regular_text.dart';
@@ -9,38 +8,38 @@ class WeatherForecastInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        const Padding(
-          padding: EdgeInsets.all(8.0),
-          child: TertiaryText(text: "5-day weather forecast"),
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              WeatherForecastCard(
-                  date: "Vendredi",
-                  weatherDescription: "Clouds",
-                  temperature: "10°C",
-                  precipitation: "0%",
-                  humidity: "60%"),
-              WeatherForecastCard(
-                  date: "Vendredi",
-                  weatherDescription: "Clouds",
-                  temperature: "10°C",
-                  precipitation: "0%",
-                  humidity: "60%"),
-              WeatherForecastCard(
-                  date: "Vendredi",
-                  weatherDescription: "Clouds",
-                  temperature: "10°C",
-                  precipitation: "0%",
-                  humidity: "60%"),
-            ],
-          ),
-        )
-      ],
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: [
+          const TertiaryText(text: "5-day weather forecast"),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: const [
+                WeatherForecastCard(
+                    date: "Vendredi",
+                    weatherDescription: "Clouds",
+                    temperature: "10°C",
+                    precipitation: "0%",
+                    humidity: "60%"),
+                WeatherForecastCard(
+                    date: "Vendredi",
+                    weatherDescription: "Clouds",
+                    temperature: "10°C",
+                    precipitation: "0%",
+                    humidity: "60%"),
+                WeatherForecastCard(
+                    date: "Vendredi",
+                    weatherDescription: "Clouds",
+                    temperature: "10°C",
+                    precipitation: "0%",
+                    humidity: "60%"),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -79,15 +78,30 @@ class WeatherForecastCard extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: RegularText(text: temperature),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.thermostat, size: 10),
+                      RegularText(text: temperature),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: RegularText(text: precipitation),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.water_drop_sharp, size: 10),
+                      RegularText(text: precipitation),
+                    ],
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: RegularText(text: humidity),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.water_sharp, size: 10),
+                      RegularText(text: humidity),
+                    ],
+                  ),
                 )
               ],
             )

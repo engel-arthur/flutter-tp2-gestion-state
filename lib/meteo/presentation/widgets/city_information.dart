@@ -24,6 +24,7 @@ class CityInformation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Theme.of(context).backgroundColor,
       child: Padding(
         padding: const EdgeInsets.all(12.0),
         child: Column(
@@ -31,22 +32,38 @@ class CityInformation extends StatelessWidget {
             MainText(text: cityName),
             RegularText(text: date),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(12.0),
               child: WeatherIcon(
                   weatherDescription: weatherDescription, size: 150),
             ),
-            SecondaryText(text: temperature),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(Icons.thermostat, size: 32),
+                SecondaryText(text: temperature),
+              ],
+            ),
             Center(
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RegularText(text: precipitation),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.water_drop_sharp, size: 15),
+                        RegularText(text: precipitation),
+                      ],
+                    ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: RegularText(text: humidity),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.water_sharp, size: 15),
+                        RegularText(text: humidity),
+                      ],
+                    ),
                   ),
                 ],
               ),
