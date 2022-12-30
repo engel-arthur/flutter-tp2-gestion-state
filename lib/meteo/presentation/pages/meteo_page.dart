@@ -90,9 +90,9 @@ Column _getForecastWidgets(WeatherForecastModel? forecast) {
       humidity: getHumidityFromForecastList(forecasts[0])));
 
   List<WeatherForecastCard> weatherForecastCards = [];
-  for (int i = 1; i <= min(5, forecasts.length); i++) {
+  for (int i = 8; i <= min(39, forecasts.length); i += 8) {
     weatherForecastCards.add(WeatherForecastCard(
-        date: getDateNDaysFromToday(i),
+        date: getDateNDaysFromToday(i ~/ 8),
         weatherDescription: getWeatherDescriptionFromForecastList(forecasts[i]),
         temperature: getTemperatureFromForecastList(forecasts[i]),
         windspeed: getWindSpeedFromForecastList(forecasts[i]),
