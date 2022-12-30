@@ -4,7 +4,10 @@ import 'package:tp2_gestion_state/meteo/presentation/widgets/widget_utils/regula
 import 'package:tp2_gestion_state/meteo/presentation/widgets/widget_utils/tertiary_text.dart';
 
 class WeatherForecastInformation extends StatelessWidget {
-  const WeatherForecastInformation({super.key});
+  final List<WeatherForecastCard> weatherForecastCards;
+
+  const WeatherForecastInformation(
+      {super.key, required this.weatherForecastCards});
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +18,7 @@ class WeatherForecastInformation extends StatelessWidget {
           const TertiaryText(text: "5-day weather forecast"),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            child: Row(
-              children: const [
-                WeatherForecastCard(
-                    date: "Vendredi",
-                    weatherDescription: "Clouds",
-                    temperature: "10°C",
-                    precipitation: "0%",
-                    humidity: "60%"),
-                WeatherForecastCard(
-                    date: "Vendredi",
-                    weatherDescription: "Clouds",
-                    temperature: "10°C",
-                    precipitation: "0%",
-                    humidity: "60%"),
-                WeatherForecastCard(
-                    date: "Vendredi",
-                    weatherDescription: "Clouds",
-                    temperature: "10°C",
-                    precipitation: "0%",
-                    humidity: "60%"),
-              ],
-            ),
+            child: Row(children: weatherForecastCards),
           )
         ],
       ),
@@ -48,7 +30,7 @@ class WeatherForecastCard extends StatelessWidget {
   final String date;
   final String weatherDescription;
   final String temperature;
-  final String precipitation;
+  final String windspeed;
   final String humidity;
 
   const WeatherForecastCard(
@@ -56,7 +38,7 @@ class WeatherForecastCard extends StatelessWidget {
       required this.date,
       required this.weatherDescription,
       required this.temperature,
-      required this.precipitation,
+      required this.windspeed,
       required this.humidity});
 
   @override
@@ -90,7 +72,7 @@ class WeatherForecastCard extends StatelessWidget {
                   child: Row(
                     children: [
                       const Icon(Icons.water_drop_sharp, size: 10),
-                      RegularText(text: precipitation),
+                      RegularText(text: windspeed),
                     ],
                   ),
                 ),

@@ -9,7 +9,7 @@ class CityInformation extends StatelessWidget {
   final String date;
   final String weatherDescription;
   final String temperature;
-  final String precipitation;
+  final String windspeed;
   final String humidity;
 
   const CityInformation(
@@ -18,7 +18,7 @@ class CityInformation extends StatelessWidget {
       required this.date,
       required this.weatherDescription,
       required this.temperature,
-      required this.precipitation,
+      required this.windspeed,
       required this.humidity});
 
   @override
@@ -51,8 +51,8 @@ class CityInformation extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        const Icon(Icons.water_drop_sharp, size: 15),
-                        RegularText(text: precipitation),
+                        const Icon(Icons.wind_power_sharp, size: 15),
+                        RegularText(text: windspeed),
                       ],
                     ),
                   ),
